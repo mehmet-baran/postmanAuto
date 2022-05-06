@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "1c156f2a-0529-4e6b-8974-320f589e2b74",
+		"name": "Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CompCompRequest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.Composites[\"11bde4c2-101f-4575-b51c-ebf4ede818b5\"].Id).to.eql(\"11bde4c2-101f-4575-b51c-ebf4ede818b5\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "APIKEY {{devEnvApiKey}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"TestId\":\"{{CompositeCompTestDevTestId}}\"}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{testServiceDevEnvBaseUrl}}/scriptkit",
+					"host": [
+						"{{testServiceDevEnvBaseUrl}}"
+					],
+					"path": [
+						"scriptkit"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "APIKEY {{devEnvApiKey}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "testServiceDevEnvBaseUrl",
+			"value": "https://e2zkwyufoa.execute-api.eu-west-1.amazonaws.com/v1",
+			"type": "string"
+		},
+		{
+			"key": "CompositeCompTestDevTestId",
+			"value": "a9732752-2d00-4713-b06a-2333d8b2f3de",
+			"type": "string"
+		},
+		{
+			"key": "devEnvApiKey",
+			"value": "f7264413a5fac586",
+			"type": "string"
+		}
+	]
+}
